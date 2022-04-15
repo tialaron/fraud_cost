@@ -22,7 +22,7 @@ import math
 
 from scipy.signal import savgol_filter
 
-df = pd.read_csv("/sysroot/home/user/Загрузки/PyProject/fraudoperations/venv/creditcard2.csv") # читаем базу
+df = pd.read_csv("creditcard2.csv") # читаем базу
 
 st.title("Рассмотрим определение мошеннических операций")
 'Имеется некий датасет из транзакций.'
@@ -51,7 +51,7 @@ X_test = X_test.values
 'Размер обучающей выборки: ',X_train.shape
 'Размер тестовой выборки: ',X_test.shape
 
-model1 = load_model('/sysroot/home/user/Загрузки/PyProject/fraudoperations/venv/autocoder1.h5')
+model1 = load_model('autocoder1.h5')
 prediction1 = model1.predict(X_test)
 
 mse1 = np.mean(np.power(X_test - prediction1, 2), axis=1)
