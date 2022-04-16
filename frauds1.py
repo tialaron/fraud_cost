@@ -58,13 +58,16 @@ mse1 = np.mean(np.power(X_test - prediction1, 2), axis=1)
 mse_normal = mse1[y_test.values == 0] # среднеквадратичная ошибка на нормальных операциях
 mse_frauds = mse1[y_test.values == 1] # среднеквадратичная ошибка на мошеннических операциях
 
+mse_real_normal = min(mse_normal)
+mse_real_fraud = max(mse_frauds)
+
 mse_normal = np.log(mse_normal)
 mse_frauds = np.log(mse_frauds)
 min_mse_norm = min(mse_normal)
 max_mse_fraud = max(mse_frauds)
 
-'Минимальная MSE для нормальных операций', min_mse_norm
-'Максимальная MSE для мошеннических операций', max_mse_fraud
+'Минимальная MSE для нормальных операций', mse_real_normal
+'Максимальная MSE для мошеннических операций', mse_real_fraud
 delta_bias = max_mse_fraud - min_mse_norm
 
 def getAccByBias(bias): # функция будет принимать какое то пороговое значение
